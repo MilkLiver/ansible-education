@@ -37,7 +37,7 @@ RUN mkdir -p /opt/init
 COPY ./startup.sh /opt/init/
 RUN chmod +x /opt/init/startup.sh
 
-RUN COPY ./ansible.cfg /workspace/ansible.cfg
+COPY ./ansible.cfg /workspace/ansible.cfg
 
 # ---------- user settings ----------
 # change root password

@@ -2,15 +2,6 @@ FROM registry.redhat.io/ubi8/ubi:latest
 ARG UID=0
 ARG GID=0
 
-# ---------- init shell ----------
-RUN mkdir -p /opt/init
-COPY ./startup.sh /opt/init/
-RUN chmod +x /opt/init/startup.sh
-
-# ---------- user settings ----------
-# change root password
-RUN echo "root:Admin12345" | chpasswd
-
 # ---------- dnf install ----------
 # update
 RUN dnf update -y
@@ -39,5 +30,14 @@ RUN pip3 install kubernetes
 RUN ansible-galaxy collection install kubernetes.core
 # install openshift collection
 RUN ansible-galaxy collection install community.okd
+
+# ---------- init shell ----------
+RUN mkdir -p /opt/init
+COPY ./startup.sh /opt/init/
+RUN chmod +x /opt/init/startup.sh
+
+# ---------- user settings ----------
+# change root password
+RUN echo "root:Admin12345" | chpasswd
 
 ENTRYPOINT ["/opt/init/startup.sh"]

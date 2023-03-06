@@ -1,4 +1,6 @@
 FROM registry.redhat.io/ubi8/ubi:latest
+ARG UID=0
+ARG GID=0
 
 # ---------- init shell ----------
 RUN mkdir -p /opt/init

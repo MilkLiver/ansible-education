@@ -5,6 +5,7 @@ ARG GID=0
 # ---------- dnf install ----------
 # update
 RUN dnf update -y
+RUN dnf -y install openssh-server openssh-clients net-tools sudo
 # Instsall python3.8
 RUN dnf module -y install python38
 # Set python3 version to 3.8

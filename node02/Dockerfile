@@ -27,9 +27,13 @@ RUN sed -i 's/^UsePAM yes$/UsePAM no/' /etc/ssh/sshd_config
 # ---------- user settings ----------
 # change root password
 RUN echo "root:Admin12345" | chpasswd
+
 # create user student
-RUN useradd -u 1000 -m student
-RUN echo "student:student" | chpasswd
-RUN usermod -aG wheel student
+RUN useradd -u 1000 -m node02
+RUN echo "node02:node02" | chpasswd
+RUN usermod -aG wheel node02
+
+RUN mkdir /workspace
+WORKDIR /workspace
 
 ENTRYPOINT ["/opt/sshd/startup.sh"]

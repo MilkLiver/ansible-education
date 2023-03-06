@@ -41,4 +41,9 @@ RUN chmod +x /opt/init/startup.sh
 # change root password
 RUN echo "root:Admin12345" | chpasswd
 
+RUN mkdir /workspace
+WORKDIR /workspace
+
+RUN ssh-keygen -t rsa -b 4096 -N '' -f /workspace/id_rsa
+
 ENTRYPOINT ["/opt/init/startup.sh"]

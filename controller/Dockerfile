@@ -1,5 +1,9 @@
 FROM registry.redhat.io/ubi8/ubi:latest
 
+RUN mkdir -p /opt/init
+COPY ./startup.sh /opt/init/
+RUN chmod +x /opt/init/startup.sh
+
 # update
 RUN dnf update -y
 
@@ -37,4 +41,4 @@ RUN ansible-galaxy collection install kubernetes.core
 ## install openshift collection
 RUN ansible-galaxy collection install community.okd
 
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+ENTRYPOINT ["/opt/init/startup.sh"]

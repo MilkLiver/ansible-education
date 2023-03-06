@@ -4,7 +4,6 @@ ARG GID=0
 
 RUN mkdir -p /opt/sshd
 COPY ./startup.sh /opt/sshd/
-
 RUN chmod +x /opt/sshd/startup.sh
 
 # update

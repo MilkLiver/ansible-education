@@ -32,20 +32,18 @@ RUN ansible-galaxy collection install kubernetes.core
 # install openshift collection
 RUN ansible-galaxy collection install community.okd
 
-# ---------- init shell ----------
+# ---------- init ----------
+RUN mkdir /workspace
+WORKDIR /workspace
+COPY ./ansible.cfg /workspace/ansible.cfg
+RUN ssh-keygen -t rsa -b 4096 -N '' -f /workspace/id_rsa
+
 RUN mkdir -p /opt/init
 COPY ./startup.sh /opt/init/
 RUN chmod +x /opt/init/startup.sh
 
-COPY ./ansible.cfg /workspace/ansible.cfg
-
 # ---------- user settings ----------
 # change root password
 RUN echo "root:Admin12345" | chpasswd
-
-RUN mkdir /workspace
-WORKDIR /workspace
-
-RUN ssh-keygen -t rsa -b 4096 -N '' -f /workspace/id_rsa
 
 ENTRYPOINT ["/opt/init/startup.sh"]

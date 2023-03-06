@@ -33,6 +33,7 @@ RUN useradd -u 1000 -m node01
 RUN echo "node01:node01" | chpasswd
 RUN usermod -aG wheel node01
 
+# ---------- init ----------
 RUN mkdir /workspace
 WORKDIR /workspace
 

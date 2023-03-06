@@ -29,6 +29,9 @@ for ((studentN = 1, portN = 1; studentN <= $STUDENT_NUMBERS; portN += 2, student
 
     podman run --cap-add AUDIT_WRITE -e VM_IP=$VM_IP -e ANSIBLE_EDU_ENV=$ANSIBLE_EDU_ENV -e SSH_PORT=$ANSIBLE_EDU_NODE02_PORT --network $ANSIBLE_EDU_ENV -p $ANSIBLE_EDU_NODE02_PORT:22 -idt --name $ANSIBLE_EDU_ENV-node02 docker.io/milkliver/ansible-education-node02-container:$EDUCATION_IMAGE_VERSION
 
+    echo "podman exec -it $ANSIBLE_EDU_ENV-controller bash" >./connectController/ansible-edu-$ANSIBLE_EDU_ENV
+    chmod +x ./connectController/ansible-edu-$ANSIBLE_EDU_ENV
+
     echo "create $ANSIBLE_EDU_ENV env success"
 
 done

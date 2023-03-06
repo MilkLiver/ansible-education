@@ -37,6 +37,8 @@ RUN mkdir -p /opt/init
 COPY ./startup.sh /opt/init/
 RUN chmod +x /opt/init/startup.sh
 
+RUN COPY ./ansible.cfg /workspace/ansible.cfg
+
 # ---------- user settings ----------
 # change root password
 RUN echo "root:Admin12345" | chpasswd

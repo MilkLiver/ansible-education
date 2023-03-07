@@ -22,7 +22,7 @@ ansible_port=$ANSIBLE_EDU_NODE02_PORT
 EOF
 # --------------------
 
-cp -rf /sample /workspace/sample
+cp -rf /sample /workspace
 
 export $ANSIBLE_EDU_NODE01_PORT
 

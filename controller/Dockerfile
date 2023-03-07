@@ -40,6 +40,9 @@ RUN mkdir /sample
 COPY ./ansible.cfg /sample/ansible.cfg
 RUN ssh-keygen -t rsa -b 4096 -N '' -f /sample/id_rsa
 
+COPY ./useful_command.txt /sample/useful_command.txt
+COPY ./README.txt /sample/README.txt
+
 RUN mkdir -p /opt/init
 COPY ./startup.sh /opt/init/
 RUN chmod +x /opt/init/startup.sh

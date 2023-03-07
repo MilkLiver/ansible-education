@@ -5,20 +5,6 @@ echo "Student = $ANSIBLE_EDU_ENV" >>/etc/motd
 echo "Node = controller" >>/etc/motd
 
 # --------------------
-cat <<EOF >/sample/ansible.cfg
-[defaults]
-inventory=./inventory
-ask_pass=false
-private_key_file=/workspace/id_rsa
-
-[privilege_escalation]
-become=false
-become_method=sudo
-become_user=root
-become_ask_pass=false
-EOF
-
-# --------------------
 cat <<EOF >/sample/inventory
 [ansible_node01]
 node01

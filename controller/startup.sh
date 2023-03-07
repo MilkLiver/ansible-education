@@ -5,7 +5,7 @@ echo "Student = $ANSIBLE_EDU_ENV" >>/etc/motd
 echo "Node = controller" >>/etc/motd
 
 # --------------------
-cat <<EOF >/workspace/ansible.cfg
+cat <<EOF >/sample/ansible.cfg
 [defaults]
 inventory=./inventory
 ask_pass=false
@@ -19,7 +19,7 @@ become_ask_pass=false
 EOF
 
 # --------------------
-cat <<EOF >/workspace/inventory
+cat <<EOF >/sample/inventory
 [ansible_node01]
 node01
 
@@ -35,6 +35,8 @@ ansible_user=node02
 ansible_port=$ANSIBLE_EDU_NODE02_PORT
 EOF
 # --------------------
+
+cp -rf /sample /workspace/sample
 
 export $ANSIBLE_EDU_NODE01_PORT
 

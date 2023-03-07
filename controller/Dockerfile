@@ -35,8 +35,10 @@ RUN ansible-galaxy collection install community.okd
 # ---------- init ----------
 RUN mkdir /workspace
 WORKDIR /workspace
-COPY ./ansible.cfg /workspace/ansible.cfg
-RUN ssh-keygen -t rsa -b 4096 -N '' -f /workspace/id_rsa
+
+RUN mkdir /sample
+COPY ./ansible.cfg /sample/ansible.cfg
+RUN ssh-keygen -t rsa -b 4096 -N '' -f /sample/id_rsa
 
 RUN mkdir -p /opt/init
 COPY ./startup.sh /opt/init/

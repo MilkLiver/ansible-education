@@ -1,8 +1,8 @@
 #!/bin/bash
 
 STUDENT_NUMBERS=3
-VM_IP=xxx.xxx.xxx.xxx
-EDUCATION_IMAGE_VERSION=1.5.0
+VM_IP=192.168.50.111
+EDUCATION_IMAGE_VERSION=1.7.0
 
 WORKSPACE_ROOT_DIR=/opt/ansible-edu
 ANSIBLE_EDU_CONNECT_SHELL_DIR=/opt/ansible-edu/connectController

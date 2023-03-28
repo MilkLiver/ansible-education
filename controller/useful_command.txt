@@ -1,9 +1,9 @@
 
 COPY Public Key to node01
-ssh-copy-id -i /workspace/sample/id_rsa node01@node01 -p $ANSIBLE_EDU_NODE01_PORT
+ssh-copy-id -i /sample/id_rsa node01@node01 -p $ANSIBLE_EDU_NODE01_PORT
 
 COPY Public Key to node02
-ssh-copy-id -i /workspace/sample/id_rsa node02@node02 -p $ANSIBLE_EDU_NODE02_PORT
+ssh-copy-id -i /sample/id_rsa node02@node02 -p $ANSIBLE_EDU_NODE02_PORT
 
 Test Command
 ansible ansible_node01 -m shell -a "env"

@@ -14,9 +14,9 @@ RUN dnf -y install openssh-server openssh-clients net-tools sudo
 # RUN alternatives --set python3 /usr/bin/python3.8
 
 # ---------- init shell ----------
-RUN mkdir -p /opt/sshd
-COPY ./startup.sh /opt/sshd/
-RUN chmod +x /opt/sshd/startup.sh
+RUN mkdir -p /opt/init
+COPY ./startup.sh /opt/init/
+RUN chmod +x /opt/init/startup.sh
 
 # ---------- sshd settings ----------
 # create keys for sshd
@@ -37,4 +37,4 @@ RUN usermod -aG wheel node01
 RUN mkdir /workspace
 WORKDIR /workspace
 
-ENTRYPOINT ["/opt/sshd/startup.sh"]
+ENTRYPOINT ["/opt/init/startup.sh"]

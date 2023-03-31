@@ -26,4 +26,4 @@ cp -rf /sample /workspace
 
 export $ANSIBLE_EDU_NODE01_PORT
 
-tail -f /dev/null
+exec /usr/sbin/init

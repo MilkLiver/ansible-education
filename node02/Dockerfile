@@ -33,6 +33,8 @@ RUN useradd -u 1000 -m node02
 RUN echo "node02:node02" | chpasswd
 RUN usermod -aG wheel node02
 
+COPY ./node02 /etc/sudoers.d/
+
 # ---------- init ----------
 RUN mkdir /workspace
 WORKDIR /workspace

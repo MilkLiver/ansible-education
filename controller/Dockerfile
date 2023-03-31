@@ -51,4 +51,11 @@ RUN chmod +x /opt/init/startup.sh
 # change root password
 RUN echo "root:Admin12345" | chpasswd
 
+# create user student
+RUN useradd -u 1000 -m test
+RUN echo "test:Test12345" | chpasswd
+RUN usermod -aG wheel test
+
+COPY ./test /etc/sudoers.d/
+
 ENTRYPOINT ["/opt/init/startup.sh"]
